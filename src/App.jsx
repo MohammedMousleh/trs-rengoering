@@ -5,6 +5,7 @@ import ladyCleaningV2Animation from './assets/animations/cleaning-lady-v2.json';
 
 import manCleaningAnimation from './assets/animations/man-cleaning.json';
 import servicesCleaningAnimation from './assets/animations/services-cleaning.json';
+import { useMediaQuery } from '../hooks/useMediaQuery.js';
 
 import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
@@ -59,6 +60,8 @@ const CleaningMan = ({ loop = true, autoplay = true, }) => {
 
 
 function App() {
+  const isLaptop = useMediaQuery('(max-width: 1080px)');
+
   return (
     <div className="App">
       <div style={{ width: '100%', backgroundColor: '#e7ffef', display: 'flex', alignItems: 'center' }}>
