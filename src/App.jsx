@@ -2,12 +2,69 @@ import './App.css';
 import { IoChevronDown, IoCheckmarkCircle } from 'react-icons/io5';
 import ladyCleaningAnimation from './assets/animations/cleaning-lady.json';
 import ladyCleaningV2Animation from './assets/animations/cleaning-lady-v2.json';
+import sofaBeforeAfter from './assets/animations/sofa-before-after.json';
+import madressBeforeAfter from './assets/animations/madress-before-after.json';
 
 import manCleaningAnimation from './assets/animations/man-cleaning.json';
 // import servicesCleaningAnimation from './assets/animations/services-cleaning.json';
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import lottie from "lottie-web";
+import styled, { keyframes } from 'styled-components';
+
+
+const Page = styled.div`
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: #e7ffef;
+  align-items: center;
+`;
+
+const Page2 = styled.div`
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+`;
+
+const Page3 = styled.div`
+  position: absolute;
+  top: 200%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-image: url("/blob-scatter.svg");
+  align-items: center;
+  flex-direction: column;
+  `;
+
+const Header = styled.div`
+background-color: rgba(255, 255, 255, 0.5);
+-o-backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+-moz-backdrop-filter: blur(4px);
+backdrop-filter: blur(4px);
+height: 100px;
+position: fixed;
+top: 0;
+z-index: 1;
+width: 100%;
+display: flex;
+align-items: center;
+`;
 
 
 const CleaningLady = ({ height, v2, loop = true, autoplay = true, }) => {
@@ -23,6 +80,35 @@ const CleaningLady = ({ height, v2, loop = true, autoplay = true, }) => {
   }, [autoplay, loop, v2]);
   return <div style={{ height, }} ref={anime}></div>;
 };
+
+const SofaBeforeAfter = ({ height, v2, loop = true, autoplay = true, ...props }) => {
+  const anime = useRef(null);
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: anime.current,
+      renderer: "svg",
+      loop,
+      autoplay,
+      animationData: sofaBeforeAfter,
+    });
+  }, [autoplay, loop, v2]);
+  return <div {...props} style={{ height, }} ref={anime}></div>;
+};
+
+const MadressBeforeAfter = ({ height, v2, loop = true, autoplay = true, }) => {
+  const anime = useRef(null);
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: anime.current,
+      renderer: "svg",
+      loop,
+      autoplay,
+      animationData: madressBeforeAfter,
+    });
+  }, [autoplay, loop, v2]);
+  return <div style={{ height, }} ref={anime}></div>;
+};
+
 
 const CleaningMan = ({ loop = true, autoplay = true, }) => {
   const anime = useRef(null);
@@ -53,6 +139,11 @@ const CleaningMan = ({ loop = true, autoplay = true, }) => {
 //   return <div style={{ height: '700px' }} ref={anime}></div>;
 // };
 
+function delay(milliseconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds);
+  });
+}
 
 function App() {
 
@@ -60,10 +151,11 @@ function App() {
   const page2Ref = useRef();
   const page3Ref = useRef();
   const [currentPage, setCurrentPage] = useState(1);
+  const [canScroll, setCanScroll] = useState(true);
 
   const scrollTo = (page) => {
     if (page === 1) {
-      return page1Ref.current.scrollIntoView({ behavior: 'smooth' })
+      return page1Ref.current.scrollIntoView({ behavior: 'smooth' });
     }
     if (page === 2) {
       return page2Ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -73,36 +165,44 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    window.onwheel = e => {
-      if (e.deltaY >= 0) {
-        if (currentPage !== 3) {
-          setCurrentPage(currentPage + 1);
-          scrollTo(currentPage + 1);
-        }
-      } else {
-        if (currentPage !== 1) {
-          setCurrentPage(currentPage - 1);
-          scrollTo(currentPage - 1);
+  const onScrolling = useCallback(async () => {
+    if (canScroll) {
+      window.onwheel = e => {
+        if (e.deltaY >= 0) {
+          if (currentPage !== 3) {
+            setCurrentPage(currentPage + 1);
+            scrollTo(currentPage + 1);
+          }
+        } else {
+          if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1);
+            scrollTo(currentPage - 1);
 
+          }
         }
       }
     }
-  }, [currentPage]);
+
+  }, [canScroll, currentPage])
+
+  const onScroll = useCallback(async () => {
+    if (canScroll) {
+      onScrolling();
+      setCanScroll(false);
+      await delay(500);
+      setCanScroll(true);
+    }
+  }, [canScroll, onScrolling])
+
+  useEffect(() => {
+    onScroll();
+  }, [onScroll]);
 
   return (
-    <div className="App">
-      <div style={{ width: '100%', backgroundColor: '#e7ffef', display: 'flex', alignItems: 'center' }}>
-        <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
-          <div style={{ display: 'flex', alignItems: 'center', columnGap: '5px' }}>
-            <p>Ring til os og få et tilbud. Tlf:</p>
-            <p style={{ fontWeight: 500, }}> 26 34 24 74</p>
-          </div>
-        </div>
-      </div>
-
-      <div style={{ width: '100%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', }}>
-
+    <>
+      <>
+        {/* 
+      <Header>
         <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
 
           <div style={{ display: 'flex', alignItems: 'center', columnGap: '5px' }}>
@@ -145,11 +245,12 @@ function App() {
           </button>
 
         </div>
-
-      </div>
-
+      </Header> */}
+      </>
       {/* page 1 */}
-      <div ref={page1Ref} style={{ width: '100%', backgroundColor: '#e7ffef', display: 'flex', alignItems: 'center', height: '100vh' }}>
+      <Page
+        isHidden={currentPage !== 1}
+        ref={page1Ref}>
         <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px', alignItems: 'center', justifyContent: 'center', width: '40%' }}>
@@ -172,10 +273,13 @@ function App() {
           </div>
 
         </div>
-      </div>
+      </Page>
 
       {/* page 2 */}
-      <div ref={page2Ref} style={{ width: '100%', backgroundColor: '#fffff', display: 'flex', alignItems: 'center', height: '100vh' }}>
+      <Page2
+        isHidden={currentPage !== 2}
+        display="block"
+        ref={page2Ref}>
         <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
           <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: ' center', borderRight: '0.5px dashed #e0e0e0' }}>
             <div>
@@ -330,17 +434,25 @@ function App() {
 
           </div>
         </div>
-      </div>
-      <div style={{ width: '100%', height: '200px', backgroundImage: 'url(/wave-white.svg)', backgroundSize: 'cover', display: 'flex', }} />
+      </Page2>
+
+
 
       {/* page 3 */}
-      <div ref={page3Ref} style={{ width: '100%', backgroundImage: 'url(/blob-scatter.svg)', backgroundSize: 'cover', display: 'flex', alignItems: 'center', flexDirection: 'column', height: '100vh' }} >
+      <Page3
+        isHidden={currentPage !== 3}
+        ref={page3Ref}>
         <div>
-
-          <div className="classContainer" style={{ width: 'fit-content', margin: '0 auto', boxShadow: 'none', marginBottom: '40px', }}>
+          <div className="classContainer" style={{ width: 'fit-content', margin: '0 auto', boxShadow: 'none', marginBottom: '40px', height: 'fit-content', }}>
             <img src="agreement-100.png"></img>
             <h4 style={{ color: '#25ba57', fontSize: '2.5rem', margin: 0, fontWeight: 800, textAlign: 'center', marginTop: '-20px', }}>Grundene til</h4>
             <h4 style={{ color: '#25ba57', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-20px', textAlign: 'center', }}>Vores kunder vælger os  </h4>
+          </div>
+
+          <div style={{ display: 'flex', width: '100%', alignItems: 'center', jusitifyContent: 'center' }}>
+            <div style={{ alignSelf: 'center', width: '100%' }}>
+              <SofaBeforeAfter style={{ flex: 1 }} height={300} />
+            </div>
           </div>
 
           <div style={{ width: '100%', backgroundColor: '#fffff', display: 'flex', marginTop: '20px', }}>
@@ -379,14 +491,12 @@ function App() {
               </div>
 
             </div>
-
           </div>
 
         </div>
-      </div>
+      </Page3>
 
-
-    </div>
+    </>
 
   );
 }
