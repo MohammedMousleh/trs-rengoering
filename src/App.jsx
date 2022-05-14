@@ -34,6 +34,9 @@ const Page = styled.div`
   display: flex;
   background-color: #e7ffef;
   align-items: center;
+  min-height:100%;
+  background:linear-gradient(0deg, rgba(0, 0, 0, 0.679), rgba(255, 255, 255, 0.219)), url("/gallery/baggrund.jpg");
+  background-size:cover;
 `;
 
 const Page2 = styled.div`
@@ -222,53 +225,53 @@ function App() {
     setImages(arr);
   }, [])
 
-  const scrollTo = (page) => {
-    if (page === 1) {
-      return page1Ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (page === 2) {
-      return page2Ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (page === 3) {
-      return page3Ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (page === 4) {
-      return page4Ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  // const scrollTo = (page) => {
+  //   if (page === 1) {
+  //     return page1Ref.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  //   if (page === 2) {
+  //     return page2Ref.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  //   if (page === 3) {
+  //     return page3Ref.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  //   if (page === 4) {
+  //     return page4Ref.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // };
 
-  const onScrolling = useCallback(async () => {
-    if (canScroll) {
-      window.onwheel = e => {
-        if (e.deltaY >= 0) {
-          if (currentPage !== 4) {
-            setCurrentPage(currentPage + 1);
-            scrollTo(currentPage + 1);
-          }
-        } else {
-          if (currentPage !== 1) {
-            setCurrentPage(currentPage - 1);
-            scrollTo(currentPage - 1);
+  // const onScrolling = useCallback(async () => {
+  //   if (canScroll) {
+  //     window.onwheel = e => {
+  //       if (e.deltaY >= 0) {
+  //         if (currentPage !== 4) {
+  //           setCurrentPage(currentPage + 1);
+  //           scrollTo(currentPage + 1);
+  //         }
+  //       } else {
+  //         if (currentPage !== 1) {
+  //           setCurrentPage(currentPage - 1);
+  //           scrollTo(currentPage - 1);
 
-          }
-        }
-      }
-    }
+  //         }
+  //       }
+  //     }
+  //   }
 
-  }, [canScroll, currentPage])
+  // }, [canScroll, currentPage])
 
-  const onScroll = useCallback(async () => {
-    if (canScroll) {
-      onScrolling();
-      setCanScroll(false);
-      await delay(500);
-      setCanScroll(true);
-    }
-  }, [canScroll, onScrolling])
+  // const onScroll = useCallback(async () => {
+  //   if (canScroll) {
+  //     onScrolling();
+  //     setCanScroll(false);
+  //     await delay(500);
+  //     setCanScroll(true);
+  //   }
+  // }, [canScroll, onScrolling])
 
-  useEffect(() => {
-    onScroll();
-  }, [onScroll]);
+  // useEffect(() => {
+  //   onScroll();
+  // }, [onScroll]);
 
   return (
     <div style={{ backgroundColor: 'rgb(15, 29, 52)', width: '100%' }}>
@@ -326,10 +329,10 @@ function App() {
           ref={page1Ref}>
           <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
 
-            <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px', alignItems: 'center', justifyContent: 'center', width: '40%' }}>
-              <h1 style={{ fontSize: '60px', color: 'rgb(4, 141, 141)', margin: '0px' }}> Hvor pletfri rengøring kommer til din dør!</h1>
-              <p style={{ fontSize: '20px', color: 'rgb(4, 141, 141)', margin: '0px' }}>Vi forstår at virksomheder er forskellige, og på samme måde er deres rengørings behov det også. </p>
-              <div style={{ display: 'flex', width: '100%', columnGap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px', alignItems: 'center', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
+              <h1 style={{ fontSize: '60px', color: 'white', margin: '0px', textAlign: 'center' }}>Vi er her for at hjælpe med rengøringen!</h1>
+              <p style={{ fontSize: '20px', color: 'white', margin: '0px' }}>Vi forstår at virksomheder er forskellige, og på samme måde er deres rengørings behov det også. </p>
+              <div style={{ display: 'flex', width: '100%', columnGap: '20px', alignItems: 'center', justifyContent: 'center' }}>
                 <button style={{ border: 'none', backgroundColor: 'rgb(76, 113, 251)', margin: '0 auto', padding: '15px 15px', borderRadius: '6px', cursor: 'pointer' }}>
                   <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', color: 'white', fontSize: '18px' }}>
                     <IoCall />
@@ -339,13 +342,12 @@ function App() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', rowGap: '10px', width: '60%', justifySelf: 'end', position: 'relative', zIndex: 1 }}>
+            {/* <div style={{ display: 'flex', rowGap: '10px', width: '60%', justifySelf: 'end', position: 'relative', zIndex: 1 }}>
               <CleaningLady styel={{ zIndex: 1 }}></CleaningLady>
               <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
                 <CatWindow height="400px" width="400px"></CatWindow>
               </div>
-              {/* <CleaningMan /> */}
-            </div>
+            </div> */}
 
           </div>
         </Page>
@@ -494,7 +496,7 @@ function App() {
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
                         <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
-                        <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Festsaler</p>
+                        <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Større bygninger & andet</p>
                       </div>
 
                     </div>
@@ -587,7 +589,7 @@ function App() {
 
         </Page3>
 
-        <Page4 ref={page4Ref}>
+        {/* <Page4 ref={page4Ref}>
 
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <h4 style={{ color: 'rgb(255, 255, 255)', fontSize: '2.5rem', fontWeight: 800, textAlign: 'center', }}>Få et indblik i vores hverdag</h4>
@@ -611,7 +613,7 @@ function App() {
 
           </div>
 
-        </Page4>
+        </Page4> */}
       </div >
     </div >
   );
