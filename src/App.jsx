@@ -21,7 +21,7 @@ margin-top: 0
 `;
 
 const Page = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0px;
   bottom: 0;
   right: 0;
@@ -407,21 +407,21 @@ function App() {
           display="block"
           ref={page2Ref}>
           <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
+
             <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: ' center', borderRight: '0.5px dashed #e0e0e0' }}>
               <div>
-                <div style={{ position: 'relative' }}>
-                  <img alt="blob" src="/gallery/standard-cleaning.jpg" style={{ display: 'block', height: '400px', width: '50%', margin: '0 auto', marginTop: '30px' }}></img>
 
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', }}>
+                <img alt="blob" src="/gallery/standard-cleaning.png" style={{ display: 'block', height: '350px', width: '350px', margin: '0 auto' }}></img>
+
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', margin: '-40px', }}>
 
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                     <h1 style={{ color: '#138472', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Standard</h1>
-                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
+                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200 }}>Rengøring</h1>
                   </div>
                   <p style={{ color: '#555555', textAlign: 'center', width: '80%', margin: '0 auto', }}>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</p>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', margin: '20px auto', }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', }}>
 
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
@@ -485,20 +485,21 @@ function App() {
 
               </div>
             </div>
+
             <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: ' center', }}>
 
               <div>
-                <img alt="blob" src="/gallery/commerciel-cleaning.jpg" style={{ display: 'block', height: '400px', width: '60%', margin: '0 auto', marginTop: '30px' }}></img>
+                <img alt="blob" src="/gallery/commerciel-cleaning.png" style={{ display: 'block', height: '350px', width: '400px', margin: '0 auto', }}></img>
 
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', margin: '-40px', }}>
 
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                     <h1 style={{ color: '#138472', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Kommerciel</h1>
-                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
+                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200 }}>Rengøring</h1>
                   </div>
-                  <p style={{ color: '#555555', textAlign: 'center', width: '80%', margin: '0 auto', }}>TRS-rengøring har nogle af de bedste maskiner til kommerciel rengøring. Med mere end 30-års efaring, så er der ikke noget vi ikke kan klare!  </p>
+                  <p style={{ color: '#555555', textAlign: 'center', width: '80%', margin: '0 auto', }}>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</p>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', margin: '20px auto', }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', }}>
 
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
@@ -538,7 +539,7 @@ function App() {
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
                         <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
-                        <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Lagerbygninger</p>
+                        <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Lagerbygningern</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
@@ -550,7 +551,6 @@ function App() {
 
                   </div>
 
-
                   <button style={{ border: 'none', backgroundColor: 'rgb(76, 113, 251)', margin: '0 auto', padding: '15px 15px', borderRadius: '6px', cursor: 'pointer' }}>
                     <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', color: 'white', fontSize: '18px' }}>
                       <IoCall />
@@ -559,9 +559,11 @@ function App() {
                   </button>
 
                 </div>
+
               </div>
 
             </div>
+
           </div>
         </Page2>
 
@@ -587,13 +589,13 @@ function App() {
             </div> */}
 
 
-            <div style={{ display: 'grid', gridTemplateColumns: '25% 25% 25% 25%', width: '95%', margin: '0 auto', }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '25% 25% 25% 25%', width: '95%', margin: '-20px  auto 0 auto', }}>
 
               <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
                 <ThrityYearsImage></ThrityYearsImage>
                 <div className="classContainer" >
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Over</h4>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>30 års earfaring </h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>Over</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>30 års earfaring </h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
                   <p style={{ margin: 0, textAlign: 'center', color: '#acacac', fontWeight: 400, width: '100%', }}>Vores mikrofiberklude, som fanger støv og snavs i stedet for at flytte rundt på det, holder længere end traditionel bomuld.</p>
                 </div>
@@ -602,29 +604,29 @@ function App() {
               <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
                 <TrustImage></TrustImage>
                 <div className="classContainer" style={{ height: '160px' }}>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>100%</h4>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Tillid & tilfredshed</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>100%</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>Tillid & tilfredshed</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
                   <p style={{ margin: 0, textAlign: 'center', color: '#acacac', fontWeight: 400, width: '100%', }}>En pengene-tilbage-garanti, også kendt som en tilfredshedsgaranti, hvis en køber ikke er tilfreds med et produkt eller en service.</p>
                 </div>
 
               </div>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column', }}>
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
                 <EcoProductsImage></EcoProductsImage>
                 <div className="classContainer" style={{ height: '160px' }}>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Miljøvenlige</h4>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengørings produkter</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>Miljøvenlige</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>Rengørings produkter</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
                   <p style={{ margin: 0, textAlign: 'center', color: '#acacac', fontWeight: 400, width: '100%', }}>Fordi indendørs forureningsrater typisk er højere end udendørs forureningsrater, tager vi støvfjernelse alvorligt.</p>
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column', }}>
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
                 <GreenInvestmentImage></GreenInvestmentImage>
                 <div className="classContainer" style={{ height: '160px' }}>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Grøn</h4>
-                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Investering</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>Grøn</h4>
+                  <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>Investering</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
                   <p style={{ margin: 0, textAlign: 'center', color: '#acacac', fontWeight: 400, width: '100%', }}>Invister både i din og jordens hygiejne. Vi prøver både gennem vores produkter og din investering at skabe et bedre sted for vores generation og den næste.</p>
                 </div>
