@@ -33,9 +33,61 @@ const Page = styled.div`
   background-color: #e7ffef;
   align-items: center;
   min-height:100%;
-  background:linear-gradient(0deg, rgba(0, 0, 0, 0.679), rgba(255, 255, 255, 0.219)), url("/gallery/baggrund.jpg");
-  background-size:cover;
+  background:linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("/gallery/baggrund-5.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #333;
 `;
+
+const EcoProductsImage = styled.div`
+  background:linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("/gallery/eco-products-small.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #333;
+  height: 300px;
+  width: 100%;
+  border-radius: .55rem .55rem 0 0;
+`;
+
+const TrustImage = styled.div`
+  background:linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("/gallery/trust-2.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #333;
+  height: 300px;
+  width: 100%;
+  border-radius: .55rem .55rem 0 0;
+
+`;
+
+const GreenInvestmentImage = styled.div`
+  background:linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("/gallery/green-investment-small.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #333;
+  height: 300px;
+  width: 100%;
+  border-radius: .55rem .55rem 0 0;
+
+`;
+
+
+const ThrityYearsImage = styled.div`
+  background:linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("/gallery/30-years.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #333;
+  height: 300px;
+  width: 100%;
+  border-radius: .55rem .55rem 0 0;
+
+`;
+
 
 const Page2 = styled.div`
   position: absolute;
@@ -46,7 +98,7 @@ const Page2 = styled.div`
   height: 100%;
   width: 90%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #FFF9F9;
 `;
 
 const Page3 = styled.div`
@@ -326,14 +378,14 @@ function App() {
           ref={page1Ref}>
           <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
 
-            <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px', alignItems: 'center', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
-              <h1 style={{ fontSize: '60px', color: 'white', margin: '0px', textAlign: 'center' }}>Vi er her for at hjælpe med rengøringen!</h1>
-              <p style={{ fontSize: '20px', color: 'white', margin: '0px' }}>Vi forstår at virksomheder er forskellige, og på samme måde er deres rengørings behov det også. </p>
+            <div style={{ display: 'flex', flexDirection: 'column', rowGap: '25px', alignItems: 'center', justifyContent: 'center', width: '50%', margin: '0 auto' }}>
+              <h1 style={{ fontSize: '60px', color: 'white', margin: '0', textAlign: 'center', fontWeight: 800 }}>Vi er her for at hjælpe med rengøringen!</h1>
+              <p style={{ fontSize: '25px', color: 'white', margin: '0px', textAlign: 'center', fontWeight: 400 }}>Vi forstår at virksomheder er forskellige, og på samme måde er deres rengørings behov det også. </p>
               <div style={{ display: 'flex', width: '100%', columnGap: '20px', alignItems: 'center', justifyContent: 'center' }}>
-                <button style={{ border: 'none', backgroundColor: 'rgb(76, 113, 251)', margin: '0 auto', padding: '15px 15px', borderRadius: '6px', cursor: 'pointer' }}>
+                <button style={{ border: 'none', backgroundColor: 'rgb(4, 141, 141)', margin: '0 auto', padding: '15px 30px', borderRadius: '6px', cursor: 'pointer' }}>
                   <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', color: 'white', fontSize: '18px' }}>
-                    <IoCall />
-                    <p style={{ fontWeight: 800, color: 'white', fontSize: '1rem', margin: 0 }}>Kontakt os</p>
+                    <IoCall style={{ fontSize: '23px' }} />
+                    <p style={{ fontWeight: 800, color: 'white', fontSize: '1.2rem', margin: 0 }}>Kontakt os</p>
                   </div>
                 </button>
               </div>
@@ -358,14 +410,14 @@ function App() {
             <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: ' center', borderRight: '0.5px dashed #e0e0e0' }}>
               <div>
                 <div style={{ position: 'relative' }}>
-                  <img alt="blob" src="/blob.svg" style={{ position: 'absolute', zIndex: '-1', height: '100%', width: '100%' }}></img>
-                  <CleaningLady autoplay={false} loop={false} height={400} />
+                  <img alt="blob" src="/gallery/standard-cleaning.jpg" style={{ display: 'block', height: '400px', width: '50%', margin: '0 auto', marginTop: '30px' }}></img>
+
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', }}>
 
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <h1 style={{ color: 'rgb(4, 141, 141)', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Standard</h1>
-                    <h1 style={{ color: 'rgb(4, 141, 141)', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
+                    <h1 style={{ color: '#138472', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Standard</h1>
+                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
                   </div>
                   <p style={{ color: '#555555', textAlign: 'center', width: '80%', margin: '0 auto', }}>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</p>
 
@@ -374,22 +426,22 @@ function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Køkkener</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Toiletter</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Soveværelser og stuer</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Vinduer</p>
                       </div>
 
@@ -398,22 +450,22 @@ function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Tæpper</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Indflytninger & Udflytninger</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Efter konstrution</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Ekstra ydelser</p>
                       </div>
 
@@ -436,15 +488,13 @@ function App() {
             <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: ' center', }}>
 
               <div>
-                <div style={{ position: 'relative' }}>
-                  <img alt="blob" src="/blob.svg" style={{ position: 'absolute', zIndex: -1, height: '100%', width: '100%' }}></img>
-                  <CleaningMan autoplay={false} loop={false} height={400} />
-                </div>
+                <img alt="blob" src="/gallery/commerciel-cleaning.jpg" style={{ display: 'block', height: '400px', width: '60%', margin: '0 auto', marginTop: '30px' }}></img>
+
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: '20px', }}>
 
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <h1 style={{ color: 'rgb(4, 141, 141)', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Kommerciel</h1>
-                    <h1 style={{ color: 'rgb(4, 141, 141)', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
+                    <h1 style={{ color: '#138472', fontSize: '3rem', margin: 0, fontWeight: 600, }}>Kommerciel</h1>
+                    <h1 style={{ color: '#138472', fontSize: '2.5rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengøring</h1>
                   </div>
                   <p style={{ color: '#555555', textAlign: 'center', width: '80%', margin: '0 auto', }}>TRS-rengøring har nogle af de bedste maskiner til kommerciel rengøring. Med mere end 30-års efaring, så er der ikke noget vi ikke kan klare!  </p>
 
@@ -453,22 +503,22 @@ function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Supermarkeder & Butikker</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Slagterier</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Medicinske faciliteter</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Fabrikker</p>
                       </div>
 
@@ -477,22 +527,22 @@ function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', rowGap: '5px' }}>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Restauranter</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Offentlige faciliteter</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Lagerbygninger</p>
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px', }}>
-                        <IoCheckmarkCircle style={{ fontSize: '20px', color: 'rgb(76, 113, 251)', }} />
+                        <IoCheckmarkCircle style={{ fontSize: '20px', color: '#ebb74a', }} />
                         <p style={{ fontWeight: '500', color: '#555555', margin: 0, }}>Større bygninger & andet</p>
                       </div>
 
@@ -537,11 +587,11 @@ function App() {
             </div> */}
 
 
-            <div style={{ display: 'grid', gridTemplateColumns: '25% 25% 25% 25%', width: '95%', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '25% 25% 25% 25%', width: '95%', margin: '0 auto', }}>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px' }}>
-                <img style={{ width: '100%', height: '300px', borderRadius: '.55rem .55rem 0rem 0rem' }} alt="some random" src="/gallery/15.jpg" />
-                <div className="classContainer">
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
+                <ThrityYearsImage></ThrityYearsImage>
+                <div className="classContainer" >
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Over</h4>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>30 års earfaring </h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
@@ -549,9 +599,9 @@ function App() {
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px' }}>
-                <img style={{ width: '100%', height: '300px', borderRadius: '.55rem .55rem 0rem 0rem' }} alt="some random" src="/gallery/19.jpg" />
-                <div className="classContainer">
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column' }}>
+                <TrustImage></TrustImage>
+                <div className="classContainer" style={{ height: '160px' }}>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>100%</h4>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Tillid & tilfredshed</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
@@ -560,9 +610,9 @@ function App() {
 
               </div>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px' }}>
-                <img style={{ width: '100%', height: '300px', borderRadius: '.55rem .55rem 0rem 0rem', }} alt="some random" src="/gallery/20.jpg" />
-                <div className="classContainer">
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column', }}>
+                <EcoProductsImage></EcoProductsImage>
+                <div className="classContainer" style={{ height: '160px' }}>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Miljøvenlige</h4>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Rengørings produkter</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
@@ -570,9 +620,9 @@ function App() {
                 </div>
               </div>
 
-              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px' }}>
-                <img style={{ width: '100%', height: '300px', borderRadius: '.55rem .55rem 0rem 0rem' }} alt="some random" src="/gallery/21.jpg" />
-                <div className="classContainer">
+              <div style={{ backgroundColor: '#333', borderRadius: '.55rem', marginRight: '20px', display: 'flex', flexDirection: 'column', }}>
+                <GreenInvestmentImage></GreenInvestmentImage>
+                <div className="classContainer" style={{ height: '160px' }}>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 800, }}>Grøn</h4>
                   <h4 style={{ color: 'white', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-10px' }}>Investering</h4>
                   <div style={{ height: '0.5px', backgroundColor: '#e0e0e0', width: '50%' }} />
