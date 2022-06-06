@@ -1,0 +1,41 @@
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
+const ImageContainer = styled.div`
+background-color: #ffcc67;
+border-radius: .55rem;
+margin-right: 20px;
+display: flex;
+flex-direction: column;
+margin-top: 20px;
+flex: 2 1 23%;
+max-width: 300px;
+
+@media (max-width: 768px)
+ {
+     width: 95%;
+     margin-right: 0;
+     margin: 0 auto;
+     max-width: 95%;
+
+ }
+`;
+
+
+const ImageComponent = ({ imageSrc, title, subTitle, description }) => {
+
+    return (
+        <ImageContainer>
+            <img style={{ height: '50%', borderRadius: '.55rem .55rem 0 0' }} src={imageSrc}></img>
+            <div className="classContainer" style={{ height: '50%' }}>
+                <h4 style={{ color: '#333', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>{title}</h4>
+                <h4 style={{ color: '#333', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>{subTitle}</h4>
+                <div style={{ height: '0.5px', backgroundColor: '#333', width: '50%' }} />
+                <p style={{ margin: 0, textAlign: 'center', color: '#333', fontWeight: 400, width: '100%', }}>{description}</p>
+            </div>
+        </ImageContainer>
+    )
+
+};
+
+export default ImageComponent; 
