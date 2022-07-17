@@ -1,11 +1,12 @@
 import './App.css';
-import { IoCheckmarkCircle, IoCall, IoMail, IoLocation } from 'react-icons/io5';
+import { IoCall, IoMail, IoLocation, IoMailOutline, IoCallOutline } from 'react-icons/io5';
 
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import ImageComponent from './components/ImageComponent';
 import getWindowDimensions from './hooks/useWindowDimensions.js';
 import CheckMarkColumn from './components/CheckMarkColumn';
+import Input from './components/Input';
 
 const Page = styled.div`
   top: 0px;
@@ -39,7 +40,7 @@ z-index: 1;
   height: 100%;
   width: 90%;
   margin: 0 auto;
-  background-color: #FFF9F9;
+
   
   @media (max-width: 768px)
   {
@@ -55,6 +56,8 @@ display: flex;
 alignItems: center;
 justifyContent: space-between;
 flex-wrap: wrap;
+column-gap: 25px;
+row-gap: 25px;
 @media (max-width: 768px)
  {
    flex-direction: column;
@@ -70,13 +73,13 @@ const Page3 = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #333;
+  background-color: #ffffff;
   padding: 20px 0px;
+  padding-bottom: 100px;
 
   @media (max-width: 768px)
  {
    width: 100%;
-   background-color: #ebb74a;
  }
   `;
 
@@ -85,6 +88,10 @@ const Page4 = styled.div`
   width: 90%;
   margin: 0 auto;
   background-color: white;
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("/gallery/baggrund-5.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   @media (max-width: 768px)
  {
    width: 100%;
@@ -131,16 +138,15 @@ const PageOneHeadlineContainer = styled.div`
 `;
 
 const PageOneButton = styled.button`
-box-shadow: rgb(rgb(76, 113, 200)) 0px 20px 50px;
 border: none;
-background-color: rgb(76, 113, 251);
+background-color: #138472;
 margin: 0 auto;
 padding: 20px 40px;
-border-radius: 30px;
+border-radius: 6px;
 cursor: pointer;
 transition: all 0.3s;
 &:hover{
-  background-color: rgb(76, 113, 200);
+  background-color: #035043;
 
 }
 
@@ -175,16 +181,18 @@ display: flex;
 align-items: center;
 flex-direction: column;
 justify-content:  center;
-border-right: 0.5px dashed #e0e0e0;
+background-color: white;
+border-radius: 6px;
 padding: 25px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
  @media (max-width: 768px)
  {
-   width: 100%;
+   width: 90%;
    border: none; 
    padding: 0px;
-   border-bottom: 1px dashed #a7a7a7;
    padding-bottom: 20px;
+   margin: 0 auto;
  }
 `;
 
@@ -222,7 +230,7 @@ margin-top: -40px;
 `;
 
 const CleaningTypeHeader = styled.div`
- color: #138472;
+ color: #333;
  font-size: 3rem;
  margin: 0;
  font-weight: 600;
@@ -236,7 +244,7 @@ const CleaningTypeHeader = styled.div`
 `;
 
 const CleaningTypeSubHeader = styled.div`
-color: #138472;
+color: #333;
 font-size: 2.5rem;
 margin: 0;
 font-weight: 200;
@@ -276,24 +284,22 @@ margin: 20px 0px;
 `;
 
 const CleaningTypeButton = styled.button`
-border: none; 
-background-color: #ebb74a;
-margin: 0 auto;
+border: none;
+background-color: #138472;
+margin: 20px auto;
 padding: 20px 40px;
-border-radius: 30px;
-margin-top: 10px;
+border-radius: 6px;
 cursor: pointer;
-
-
+color: white;
 transition: all 0.3s;
 &:hover{
-  background-color: rgb(76, 113, 200);
+  background-color: #035043;
 
 }
 
-@media (max-width: 768px)
+ @media (max-width: 768px)
  {
-   width: 85%;
+   padding: 15px 20px;
  }
 `;
 
@@ -302,7 +308,8 @@ display: flex;
 width: 95%;
 justify-content: center;
 flex-wrap: wrap;
-row-gap: 20px;
+row-gap: 25px;
+column-gap: 25px;
 @media (max-width: 768px)
  {
    display: flex; 
@@ -315,9 +322,8 @@ row-gap: 20px;
 
 
 const Page3Heading = styled.h4`
-color: white;
 font-size: 2.5rem;
-margin: 0;
+margin: 40px 0px 0px 0px;
 font-weight: 800;
 text-align: center;
 
@@ -329,7 +335,6 @@ text-align: center;
 `;
 
 const Page3SubHeading = styled.h4`
-color: white;
 font-size: 2.5rem;
 margin: 0;
 font-weight: 400;
@@ -340,6 +345,18 @@ margin-bottom: 20px;
 @media (max-width: 768px)
  {
    font-size: 30px;
+
+ }
+`;
+
+const Page2Wrapper = styled.div`
+background-color: white;
+width: 90%;
+margin: 0 auto;
+
+@media (max-width: 768px)
+ {
+   width: 100%;
 
  }
 `;
@@ -381,6 +398,22 @@ function App() {
 
   return (
     <div style={{ backgroundColor: 'rgb(15, 29, 52)', width: '100%' }}>
+
+
+      <div style={{ display: 'flex', columnGap: '25px', padding: '0px 20px', alignItems: 'center', position: 'fixed', top: '0', height: '70px', backgroundColor: '#ffffff', width: '100%', margin: '0 auto', }}>
+        <div style={{ display: 'flex', columnGap: '25px', padding: '0px 20px', alignItems: 'center', height: '70px', backgroundColor: '#ffffff', width: '90%', margin: '0 auto', }}>
+          <img style={{ height: '80px' }} src="/gallery/logo-sbs.png"></img>
+          <div style={{ display: 'flex', alignItems: 'center', columnGap: '5px' }}>
+            <IoCallOutline style={{ fontSize: '18px', }} />
+            <p style={{ margin: 0, fontWeight: '500', }}>Mobil: 26342474</p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', columnGap: '5px' }}>
+            <IoMailOutline style={{ fontSize: '20px', alignSelf: 'center', }} />
+            <p style={{ margin: 0, marginTop: '-2px', fontWeight: '500', }}> Email: trs-rengøring@hotmail.com</p>
+          </div>
+        </div>
+      </div>
+
       <div style={{ backgroundColor: 'rgb(15, 29, 52)', width: '100%' }}>
 
         {/* page 1 */}
@@ -391,6 +424,7 @@ function App() {
           <div style={{ width: '95%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
 
             <PageOneHeadlineContainer>
+
               <PageOneHeadline>Vi er her for at hjælpe med rengøringen!</PageOneHeadline>
               <PageOneSubHeadline>Vi forstår at virksomheder er forskellige, og på samme måde er deres rengørings behov det også. </PageOneSubHeadline>
               <div style={{ display: 'flex', width: '100%', columnGap: '20px', alignItems: 'center', justifyContent: 'center' }}>
@@ -407,122 +441,129 @@ function App() {
         </Page>
 
         {/* page 2 */}
-        <Page2
-          isHidden={currentPage !== 2}
-          display="block"
-          ref={page2Ref}>
-          <Page2ContentContainer >
+        <Page2Wrapper >
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content', margin: '0 auto', height: 'fit-content', }}>
+            <Page3Heading>Få indsigt i</Page3Heading>
+            <Page3SubHeading>Hvad vi tilbyder</Page3SubHeading>
+          </div>
 
-            <CleaningTypeContainer>
+          <Page2
+            isHidden={currentPage !== 2}
+            display="block"
+            ref={page2Ref}>
 
-              <CleaningTypeImage alt="blob" src="/gallery/standard-cleaning.png" />
+            <Page2ContentContainer >
 
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <CleaningTypeContainer>
 
-                <CleaningTypeHeader style={{ marginTop: '-40px' }}>Standard</CleaningTypeHeader>
-                <CleaningTypeSubHeader>Rengøring</CleaningTypeSubHeader>
-                <CleaningTypeParagraph>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</CleaningTypeParagraph>
+                <CleaningTypeImage alt="blob" src="/gallery/standard-cleaning.png" />
 
-                <CleaningTypeCheckMarkContainer>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
+                  <CleaningTypeHeader style={{ marginTop: '-40px' }}>Standard</CleaningTypeHeader>
+                  <CleaningTypeSubHeader>Rengøring</CleaningTypeSubHeader>
+                  <CleaningTypeParagraph>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</CleaningTypeParagraph>
 
-                    <CheckMarkColumn text="Køkkener"></CheckMarkColumn>
+                  <CleaningTypeCheckMarkContainer>
 
-                    <CheckMarkColumn text="Toiletter"></CheckMarkColumn>
+                    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
 
-                    <CheckMarkColumn text="Soveværelser og stuer"></CheckMarkColumn>
+                      <CheckMarkColumn text="Køkkener"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Vinduer"></CheckMarkColumn>
+                      <CheckMarkColumn text="Toiletter"></CheckMarkColumn>
 
-                  </div>
+                      <CheckMarkColumn text="Soveværelser og stuer"></CheckMarkColumn>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
+                      <CheckMarkColumn text="Vinduer"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Tæpper"></CheckMarkColumn>
+                    </div>
 
-                    <CheckMarkColumn text="Indflytninger & Udflytninger"></CheckMarkColumn>
+                    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
 
-                    <CheckMarkColumn text="Efter konstrution"></CheckMarkColumn>
+                      <CheckMarkColumn text="Tæpper"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Ekstra ydelser"></CheckMarkColumn>
+                      <CheckMarkColumn text="Indflytninger & Udflytninger"></CheckMarkColumn>
 
-                  </div>
+                      <CheckMarkColumn text="Efter konstrution"></CheckMarkColumn>
 
-                </CleaningTypeCheckMarkContainer>
+                      <CheckMarkColumn text="Ekstra ydelser"></CheckMarkColumn>
 
-                <CleaningTypeButton>
-                  <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', color: 'white', fontSize: '18px', justifyContent: 'center' }}>
-                    <IoCall />
-                    <p style={{ fontWeight: 800, color: 'white', fontSize: '1rem', margin: 0 }}>Kontakt os</p>
-                  </div>
-                </CleaningTypeButton>
+                    </div>
 
-              </div>
+                  </CleaningTypeCheckMarkContainer>
 
-            </CleaningTypeContainer>
+                  <CleaningTypeButton>
+                    <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', fontSize: '18px', justifyContent: 'center' }}>
+                      <IoCall />
+                      <p style={{ fontWeight: 800, fontSize: '1rem', margin: 0 }}>Kontakt os</p>
+                    </div>
+                  </CleaningTypeButton>
 
-            <CleaningTypeContainer>
+                </div>
 
-              <CommercielTypeImage alt="blob" src="/gallery/commerciel-cleaning.png" />
+              </CleaningTypeContainer>
 
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', }}>
+              <CleaningTypeContainer>
 
-                <CleaningTypeHeader>Kommerciel</CleaningTypeHeader>
-                <CleaningTypeSubHeader>Rengøring</CleaningTypeSubHeader>
-                <CleaningTypeParagraph>Vi tilbyder al form for rengøring. Har dit kontor, hjem, festsal eller andet brug for en god omgang rengøring? Så har du fået fat på de rigtige!</CleaningTypeParagraph>
+                <CommercielTypeImage alt="blob" src="/gallery/commerciel-cleaning.png" />
 
-                <CleaningTypeCheckMarkContainer>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
+                  <CleaningTypeHeader>Kommerciel</CleaningTypeHeader>
+                  <CleaningTypeSubHeader>Rengøring</CleaningTypeSubHeader>
+                  <CleaningTypeParagraph>Vi har mange års earfaring med kommerciel rengøring. Derfor har vi det nødvendige maskiner som sørg for at der altid er rent på din arbejdsplads.</CleaningTypeParagraph>
 
-                    <CheckMarkColumn text="Supermarkeder & Butikker"></CheckMarkColumn>
+                  <CleaningTypeCheckMarkContainer>
 
-                    <CheckMarkColumn text="Slagterier"></CheckMarkColumn>
+                    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
 
-                    <CheckMarkColumn text="Medicinske faciliteter"></CheckMarkColumn>
+                      <CheckMarkColumn text="Supermarkeder & Butikker"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Fabrikker"></CheckMarkColumn>
+                      <CheckMarkColumn text="Slagterier"></CheckMarkColumn>
 
-                  </div>
+                      <CheckMarkColumn text="Medicinske faciliteter"></CheckMarkColumn>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
+                      <CheckMarkColumn text="Fabrikker"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Restauranter"></CheckMarkColumn>
+                    </div>
 
-                    <CheckMarkColumn text="Offentlige faciliteter"></CheckMarkColumn>
+                    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '10px' }}>
 
-                    <CheckMarkColumn text="Lagerbygningern"></CheckMarkColumn>
+                      <CheckMarkColumn text="Restauranter"></CheckMarkColumn>
 
-                    <CheckMarkColumn text="Større bygninger & andet"></CheckMarkColumn>
+                      <CheckMarkColumn text="Offentlige faciliteter"></CheckMarkColumn>
 
-                  </div>
+                      <CheckMarkColumn text="Lagerbygningern"></CheckMarkColumn>
 
-                </CleaningTypeCheckMarkContainer>
+                      <CheckMarkColumn text="Større bygninger & andet"></CheckMarkColumn>
 
-                <CleaningTypeButton>
-                  <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', color: 'white', fontSize: '18px', justifyContent: 'center' }}>
-                    <IoCall />
-                    <p style={{ fontWeight: 800, color: 'white', fontSize: '1rem', margin: 0 }}>Kontakt os</p>
-                  </div>
-                </CleaningTypeButton>
+                    </div>
 
-              </div>
+                  </CleaningTypeCheckMarkContainer>
+
+                  <CleaningTypeButton>
+                    <div style={{ display: 'flex', columnGap: '10px', alignItems: 'center', fontSize: '18px', justifyContent: 'center' }}>
+                      <IoCall />
+                      <p style={{ fontWeight: 800, fontSize: '1rem', margin: 0 }}>Kontakt os</p>
+                    </div>
+                  </CleaningTypeButton>
+
+                </div>
 
 
 
-            </CleaningTypeContainer>
+              </CleaningTypeContainer>
 
-          </Page2ContentContainer>
-        </Page2>
-
+            </Page2ContentContainer>
+          </Page2>
+        </Page2Wrapper>
         {/* page 3 */}
         <Page3
           isHidden={currentPage !== 3}
           ref={page3Ref}>
 
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content', margin: '0 auto', height: 'fit-content', }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'fit-content', margin: '0 auto', height: 'fit-content', color: '#333' }}>
             <Page3Heading>Grundene til vores</Page3Heading>
             <Page3SubHeading>Kunder vælger os</Page3SubHeading>
           </div>
@@ -530,7 +571,7 @@ function App() {
           <ImageGridContainer>
 
             <ImageComponent
-              imageSrc="/gallery/30-years.jpg"
+              imageSrc="/gallery/1.jpg"
               title="Over"
               subTitle="30 års earfaring"
               description="Vores mikrofiberklude, som fanger støv og snavs i stedet for at flytte rundt på det, holder længere end traditionel bomuld."
@@ -538,7 +579,7 @@ function App() {
 
 
             <ImageComponent
-              imageSrc="/gallery/trust-2.jpg"
+              imageSrc="/gallery/2.jpg"
               title="100%"
               subTitle="Tillid & tilfredshed"
               description="En pengene-tilbage-garanti, også kendt som en tilfredshedsgaranti, hvis en køber ikke er tilfreds med et produkt eller en service."
@@ -546,14 +587,14 @@ function App() {
 
 
             <ImageComponent
-              imageSrc="/gallery/eco-products-small.jpg"
+              imageSrc="/gallery/3.jpg"
               title="Miljøvenlige"
               subTitle="Rengørings produkter"
               description="Fordi indendørs forureningsrater typisk er højere end udendørs forureningsrater, tager vi støvfjernelse alvorligt."
             ></ImageComponent>
 
             <ImageComponent
-              imageSrc="/gallery/green-investment-small.jpg"
+              imageSrc="/gallery/4.jpg"
               title="Grøn"
               subTitle="Investering"
               description="Invister både i din og jordens hygiejne. Vi prøver både gennem vores produkter og din investering at skabe et bedre sted for vores generation og den næste."
@@ -566,97 +607,61 @@ function App() {
 
         {/* Page 4 */}
         <Page4>
-          <div style={{ display: 'flex', backgroundColor: '#33322', width: '100%', padding: '5px', }}>
+
+          <div style={{
+
+            width: '100%', margin: '0 auto', columnGap: '25px', color: 'white',
+          }}>
+
             <div style={{
-              padding: '20px',
-              width: '30%',
-              backgroundColor: '#ebb74a',
-              backgroundSize: 'cover',
+              padding: ' 100px 20px',
+              width: '90%',
+              margin: '0 auto',
               position: 'relative',
               overflow: 'hidden',
+              borderRadius: '6px',
+              color: 'white',
+              backgroundColor: 'transparent',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
               zIndex: 1,
-              boxShadow: 'rgb(99, 99, 99) 0px 2px 8px 0px',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+
             }}>
-              <p style={{ fontSize: '2.5rem', fontWeight: 600, margin: 0, color: 'white', }}>Kontakt information</p>
-              <p style={{ color: 'white', fontSize: '16px', fontWeight: 400, }}>Udfyld kontaktformularen og vi vil vende tilbage til dig hurtigst muligt.</p>
-
-              <div tyle={{ fontSize: '16px', columnGap: '10px', fontWeight: 500, color: 'white' }}>
 
 
-                <div style={{ display: 'flex', width: '100%', alignItems: 'center', fontSize: '16px', columnGap: '10px', fontWeight: 500, color: 'white' }}>
-                  <IoCall />
-                  <p>34 34 24 32</p>
-                </div>
-
-                <div style={{ display: 'flex', width: '100%', alignItems: 'center', fontSize: '16px', columnGap: '10px', fontWeight: 500, color: 'white' }}>
-                  <IoMail />
-                  <p>trs-rengøring@gmail.com</p>
-                </div>
-
-                <div style={{ display: 'flex', width: '100%', alignItems: 'center', fontSize: '16px', columnGap: '10px', fontWeight: 500, color: 'white' }}>
-                  <IoLocation />
-                  <p>Agtoftsvej 31, 6400 Sønderborg</p>
-                </div>
-
+              <div>
+                <p style={{ fontSize: '2.5rem', fontWeight: 600, margin: 0, }}>TRS-Rengøring</p>
+                <p style={{ fontSize: '1.2rem', fontWeight: 500, margin: 0, marginTop: '25px', }}>
+                  Med mere end 30 års eafaring inden for branchen er vi nogle af de bedste til det vi gør.
+                </p>
+                <p>© 2020 TRS-rengøring ApS</p>
               </div>
 
-              <div style={{ zIndex: -1, backgroundColor: 'rgb(76, 113, 200)', borderRadius: '50%', height: '400px', width: '400px', position: 'absolute', bottom: '-200px', right: '-150px', }}></div>
-              <div></div>
+              <div style={{ display: 'flex', flexDirection: 'column', rowGap: '15px', alignItems: 'center', width: '100%', }}>
+
+                <div style={{ display: 'flex', flexDirection: 'column', rowGap: '15px', }}>
+                  <p style={{ fontSize: '2rem', fontWeight: 600, margin: 0, }}>Kontakt Infomation</p>
+
+                  <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px' }}>
+                    <IoCallOutline fontSize="20px" />
+                    <p style={{ fontSize: '1.2rem', fontWeight: 600, margin: 0, }}><a style={{ color: 'white', }} href="tel:sbsren@hotmail.com">+45 22 47 78 57</a></p>
+                  </div>
+
+
+                  <div style={{ display: 'flex', alignItems: 'center', columnGap: '10px' }}>
+                    <IoMailOutline fontSize="20px" />
+                    <p style={{ fontSize: '1.2rem', fontWeight: 600, margin: 0, }}><a style={{ color: 'white', }} href="mailto:sbsren@hotmail.com">sbsren@hotmail.com</a></p>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
 
-            <div style={{
-              display: 'flex',
-              width: '70%',
-              flexDirection: 'column',
-              justifyContent: 'start',
-              alignItems: 'start',
-              rowGap: '20px',
-              padding: '40px',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', columnGap: '40px', width: '100%' }}>
 
-                <input style={{
-                  width: '50%',
-                  maxWidth: '500px',
-                  height: '40px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderBottom: '1px solid #333'
-                }} placeholder='Fornavn'></input>
 
-                <input style={{
-                  width: '50%',
-                  maxWidth: '500px',
-                  height: '40px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderBottom: '1px solid #333'
-                }} placeholder='Efternavn'></input>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', columnGap: '40px', width: '100%' }}>
-
-                <input style={{
-                  width: '50%',
-                  maxWidth: '500px',
-                  height: '40px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderBottom: '1px solid #333'
-                }} placeholder='Email'></input>
-
-                <input style={{
-                  width: '50%',
-                  maxWidth: '500px',
-                  height: '40px',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderBottom: '1px solid #333'
-                }} placeholder='Telefon/mobil nummer'></input>
-              </div>
-              <textarea style={{ minHeight: '300px', width: '100%' }}></textarea>
-              <button>Send</button>
-
-            </div>
           </div>
         </Page4>
       </div >

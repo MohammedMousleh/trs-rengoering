@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
-background-color: #ffcc67;
-border-radius: .55rem;
+background-color: white;
+border-radius: 6px;
 margin-right: 20px;
 display: flex;
 flex-direction: column;
 margin-top: 20px;
 flex: 2 1 23%;
-max-width: 300px;
+max-width: 350px;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 @media (max-width: 768px)
  {
@@ -26,7 +27,7 @@ const ImageComponent = ({ imageSrc, title, subTitle, description }) => {
 
     return (
         <ImageContainer>
-            <img style={{ height: '50%', borderRadius: '.55rem .55rem 0 0' }} src={imageSrc}></img>
+            <img loading='lazy' style={{ height: '300px', borderRadius: '6px 6px 0 0' }} alt="cleaning" src={imageSrc}></img>
             <div className="classContainer" style={{ height: '50%' }}>
                 <h4 style={{ color: '#333', fontSize: '1.8rem', margin: 0, fontWeight: 800, marginTop: '-30px', }}>{title}</h4>
                 <h4 style={{ color: '#333', fontSize: '1.8rem', margin: 0, fontWeight: 200, marginTop: '-15px' }}>{subTitle}</h4>
