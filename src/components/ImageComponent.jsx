@@ -4,12 +4,11 @@ import styled from 'styled-components';
 const ImageContainer = styled.div`
 background-color: white;
 border-radius: 6px;
-margin-right: 20px;
+margin-right: 0px;
 display: flex;
 flex-direction: column;
 margin-top: 20px;
-flex: 2 1 23%;
-max-width: 350px;
+max-width: 30%;
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 @media (max-width: 768px)

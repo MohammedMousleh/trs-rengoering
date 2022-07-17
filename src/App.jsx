@@ -573,7 +573,7 @@ function App() {
             <ImageComponent
               imageSrc="/gallery/1.jpg"
               title="Over"
-              subTitle="30 års earfaring"
+              subTitle="20 års earfaring"
               description="Vores mikrofiberklude, som fanger støv og snavs i stedet for at flytte rundt på det, holder længere end traditionel bomuld."
             ></ImageComponent>
 
@@ -585,13 +585,6 @@ function App() {
               description="En pengene-tilbage-garanti, også kendt som en tilfredshedsgaranti, hvis en køber ikke er tilfreds med et produkt eller en service."
             ></ImageComponent>
 
-
-            <ImageComponent
-              imageSrc="/gallery/3.jpg"
-              title="Miljøvenlige"
-              subTitle="Rengørings produkter"
-              description="Fordi indendørs forureningsrater typisk er højere end udendørs forureningsrater, tager vi støvfjernelse alvorligt."
-            ></ImageComponent>
 
             <ImageComponent
               imageSrc="/gallery/4.jpg"
